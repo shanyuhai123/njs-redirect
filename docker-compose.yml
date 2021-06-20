@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+  njs:
+    container_name: nginx-njs
+    image: nginx:1.20.1-alpine
+    networks:
+      - traefik
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./njs:/etc/nginx/njs
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik"
+      # http entrypoints
+      - "traefik.http.routers.njs.entrypoints=web"
+      - "traefik.http.routers.njs.rule=Host(`njs.example.com`)"
+      - "traefik.http.routers.njs.middlewares=https-redirect@file"
+      # https entrypoints
+      - "traefik.http.routers.njs-secure.entrypoints=websecure"
+      - "traefik.http.routers.njs-secure.rule=Host(`njs.example.com`)"
+
+networks:
+  traefik:
+    external: true
