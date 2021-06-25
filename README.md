@@ -5,13 +5,28 @@
 
 
 ## 使用
+
+### 0. 下载项目
+
+```bash
+git clone https://github.com/shanyuhai123/njs-redirect.git
+```
+
 ### 1. 修改环境变量
 
 打开 `.env` 文件，修改为你的信息。
 
+```bash
+sudo vim .env
+```
+
 ### 2. 生成配置文件
 
-修改完 `.env` 文件后，执行 `bash setup.sh` 生成配置文件。
+修改完 `.env` 文件后，生成配置文件：
+
+```bash
+sudo bash setup.sh
+```
 
 ### 3. 启动服务
 
