@@ -16,6 +16,16 @@ services:
       - apis
     links:
       - apis
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik"
+      # http entrypoints
+      - "traefik.http.routers.njs-redirect.entrypoints=web"
+      - "traefik.http.routers.njs-redirect.rule=Host(`${domain}`)"
+      - "traefik.http.routers.njs-redirect.middlewares=https-redirect@file"
+      # https entrypoints
+      - "traefik.http.routers.njs-redirect-secure.entrypoints=websecure"
+      - "traefik.http.routers.njs-redirect-secure.rule=Host(`${domain}`)"
 
   redis:
     container_name: njs-redirect-redis

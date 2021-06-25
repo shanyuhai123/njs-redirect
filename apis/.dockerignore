@@ -1,0 +1,11 @@
+# git
+.git
+.husky
+
+# 依赖、产物
+node_modules
+dist
+
+# 文档
+docs
+README.md

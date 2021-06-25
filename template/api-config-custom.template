@@ -1,0 +1,12 @@
+const custom = {
+  mode: '${mode}',
+  provider: '${provider}',
+  token: '${token}',
+  redis: {
+    expires: ${redis_expires}
+  }
+}
+
+module.exports = {
+  custom
+}
