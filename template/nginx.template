@@ -49,11 +49,11 @@ http {
     }
 
     location @local {
-      proxy_pass ${local};
+      ${local_location_conf}
     }
 
     location @remote {
-      proxy_pass ${remote};
+      ${remote_location_conf}
     }
   }
 }
